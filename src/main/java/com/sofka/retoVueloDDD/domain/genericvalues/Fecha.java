@@ -6,10 +6,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
-public class FechaHora implements ValueObject<Date> {
+public class Fecha implements ValueObject<Date> {
     private final Date value;
 
-    public FechaHora(Date value){
+    public Fecha(Date value){
         this.value = Objects.requireNonNull(value);
         if(this.value.equals("")){
             throw new IllegalArgumentException("la fecha no puede estar vacia");
@@ -30,7 +30,7 @@ public class FechaHora implements ValueObject<Date> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        FechaHora fecha = (FechaHora) o;
+        Fecha fecha = (Fecha) o;
         return Objects.equals(value, fecha.value);
     }
 

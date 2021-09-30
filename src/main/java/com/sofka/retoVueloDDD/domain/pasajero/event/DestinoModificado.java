@@ -7,7 +7,7 @@ public class DestinoModificado extends DomainEvent {
 
     private final Destino destino;
 
-    public DestinoModificado(String type, Destino destino) {
+    public DestinoModificado(Destino destino) {
         super("aerolinea.ventatiquetes.domain.pasajero.destinocambiado");
         this.destino = destino;
     }

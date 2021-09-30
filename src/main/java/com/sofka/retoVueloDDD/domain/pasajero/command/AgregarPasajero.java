@@ -2,18 +2,17 @@ package com.sofka.retoVueloDDD.domain.pasajero.command;
 
 import co.com.sofka.domain.generic.Command;
 import com.sofka.retoVueloDDD.domain.genericvalues.Nombre;
-import com.sofka.retoVueloDDD.domain.pasajero.entity.Datos;
+import com.sofka.retoVueloDDD.domain.pasajero.entity.Dato;
 import com.sofka.retoVueloDDD.domain.pasajero.entity.Pago;
-import com.sofka.retoVueloDDD.domain.pasajero.values.PasajeroId;
 
 public class AgregarPasajero implements Command {
 
     private final Nombre nombre;
     private final Pago pago;
-    private final Datos datos; // Duda ¿ se puede mandar la entidad datos?
+    private final Dato datos; // Duda ¿ se puede mandar la entidad datos?
 
 
-    public AgregarPasajero(Nombre nombre, Pago pago, Datos datos) {
+    public AgregarPasajero(Nombre nombre, Pago pago, Dato datos) {
         this.nombre = nombre;
         this.pago = pago;
         this.datos = datos;
@@ -27,7 +26,7 @@ public class AgregarPasajero implements Command {
         return pago;
     }
 
-    public Datos getDatos() {
+    public Dato getDatos() {
         return datos;
     }
 }
