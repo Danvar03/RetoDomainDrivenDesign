@@ -1,0 +1,18 @@
+package com.sofka.retovuelo.domain.vuelo.values;
+
+import co.com.sofka.domain.generic.Identity;
+
+public class PilotoId extends Identity {
+
+    public PilotoId(){
+
+    }
+
+    public PilotoId(String id){
+        super(id);
+    }
+
+    public static PilotoId of(String id){
+        return new PilotoId(id);
+    }
+}
