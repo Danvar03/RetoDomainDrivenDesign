@@ -4,7 +4,7 @@ import co.com.sofka.domain.generic.Command;
 import com.sofka.retovuelo.domain.genericvalues.Destino;
 import com.sofka.retovuelo.domain.pasajero.values.PasajeroId;
 
-public class ModificarDestino implements Command {
+public class ModificarDestino extends Command {
 
     private final PasajeroId pasajeroId;
     private final Destino destino;

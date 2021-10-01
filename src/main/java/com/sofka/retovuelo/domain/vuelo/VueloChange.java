@@ -10,7 +10,6 @@ public class VueloChange extends EventChange {
             vuelo.nombrevuelo=event.getNombrevuelo();
             vuelo.duracion=event.getDuracion();
             vuelo.fecha=event.getFechahora();
-
         });
 
         apply((DuracionCambiada event) ->{

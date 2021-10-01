@@ -4,8 +4,7 @@ import co.com.sofka.domain.generic.Command;
 import com.sofka.retovuelo.domain.genericvalues.Fecha;
 import com.sofka.retovuelo.domain.pasajero.values.*;
 
-public class ActalizarDatosPersonalesPasajero implements Command {
-
+public class ActalizarDatosPersonalesPasajero extends Command {
     private final Correo corrreo;
     private final Direccion direccion;
     private final Fecha fechaNacimiento;

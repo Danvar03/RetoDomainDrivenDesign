@@ -4,7 +4,7 @@ import co.com.sofka.domain.generic.Command;
 import com.sofka.retovuelo.domain.genericvalues.Origen;
 import com.sofka.retovuelo.domain.pasajero.values.PasajeroId;
 
-public class ModificarOrigenDeTiquete implements Command {
+public class ModificarOrigenDeTiquete extends Command  {
 
     private final PasajeroId pasajeroId;
     private final Origen origen;

@@ -5,7 +5,7 @@ import com.sofka.retovuelo.domain.genericvalues.Nombre;
 import com.sofka.retovuelo.domain.pasajero.values.PasajeroId;
 
 
-public class AgregarPasajero implements Command {
+public class AgregarPasajero extends Command  {
     private final PasajeroId pasajeroId;
     private final Nombre nombre;
 

@@ -4,7 +4,7 @@ import co.com.sofka.domain.generic.Command;
 import com.sofka.retovuelo.domain.genericvalues.Nombre;
 import com.sofka.retovuelo.domain.pasajero.values.PasajeroId;
 
-public class ModificarNombre implements Command {
+public class ModificarNombre extends Command {
 
     private final PasajeroId pasajeroId;
     private final Nombre nombre;

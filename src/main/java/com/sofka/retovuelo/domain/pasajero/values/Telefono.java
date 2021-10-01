@@ -9,10 +9,8 @@ public class Telefono implements ValueObject<String> {
     private final String value;
 
     public Telefono(String value) {
+
         this.value = Objects.requireNonNull(value);
-        if (!this.value.matches("^[0-9-\\+]")) {
-            throw new IllegalArgumentException("Telefono no valido");
-        }
         if(value.length()<7){
             throw new IllegalArgumentException("El telefono no puede ser menor a 8 caracteres");
         }

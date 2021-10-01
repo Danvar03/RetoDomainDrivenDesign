@@ -1,12 +1,13 @@
 package com.sofka.retovuelo.domain.pasajero.command;
 
+import co.com.sofka.domain.generic.Command;
 import com.sofka.retovuelo.domain.genericvalues.Fecha;
 import com.sofka.retovuelo.domain.pasajero.values.Correo;
 import com.sofka.retovuelo.domain.pasajero.values.Direccion;
 import com.sofka.retovuelo.domain.pasajero.values.PasajeroId;
 import com.sofka.retovuelo.domain.pasajero.values.Telefono;
 
-public final class ActalizarDatosPasajeroBuilder {
+public final class ActalizarDatosPasajeroBuilder extends Command {
     private PasajeroId pasajeroId;
     private Correo corrreo;
     private Direccion direccion;

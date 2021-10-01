@@ -7,7 +7,7 @@ import co.com.sofka.business.support.ResponseEvents;
 import com.sofka.retovuelo.domain.pasajero.command.AgregarPasajero;
 import com.sofka.retovuelo.domain.pasajero.Pasajero;
 
-class AgregarPasajeroUseCase extends UseCase<RequestCommand<AgregarPasajero>, ResponseEvents> {
+public class AgregarPasajeroUseCase extends UseCase<RequestCommand<AgregarPasajero>, ResponseEvents> {
 
     @Override
     public void executeUseCase(RequestCommand<AgregarPasajero> agregarPasajeroRequestCommand){

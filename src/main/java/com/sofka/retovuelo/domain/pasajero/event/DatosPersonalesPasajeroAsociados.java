@@ -4,7 +4,7 @@ import co.com.sofka.domain.generic.DomainEvent;
 import com.sofka.retovuelo.domain.genericvalues.Fecha;
 import com.sofka.retovuelo.domain.pasajero.values.*;
 
-public class DatosPersonalesPasajeroAgregado extends DomainEvent {
+public class DatosPersonalesPasajeroAsociados extends DomainEvent {
     private  final PasajeroId pasajeroId;
     private final Correo corrreo;
     private final Direccion direccion;
@@ -13,7 +13,7 @@ public class DatosPersonalesPasajeroAgregado extends DomainEvent {
     private final DatoId datoId;
 
 
-    public DatosPersonalesPasajeroAgregado(PasajeroId pasajeroId, DatoId datoId, Correo corrreo, Direccion direccion, Fecha fechaNacimiento, Telefono telefono) {
+    public DatosPersonalesPasajeroAsociados(PasajeroId pasajeroId, DatoId datoId, Correo corrreo, Direccion direccion, Fecha fechaNacimiento, Telefono telefono) {
         super("aerolinea.ventatiquetes.domain.pasajero.destinocambiado");
         this.pasajeroId = pasajeroId;
         this.corrreo = corrreo;

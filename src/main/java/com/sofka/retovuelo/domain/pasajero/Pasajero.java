@@ -34,70 +34,75 @@ public class Pasajero extends AggregateEvent<PasajeroId> {
 
     //factoria que permite crear el agregado
 
-    public static Pasajero from(PasajeroId pasajeroId, List<DomainEvent> events){
-        var pasajero=new Pasajero(pasajeroId);
+    public static Pasajero from(PasajeroId pasajeroId, List<DomainEvent> events) {
+        var pasajero = new Pasajero(pasajeroId);
         events.forEach(pasajero::applyEvent);
         return pasajero;
     }
 
     // Comportamientos
-    public void agregarDatosPersonalesPasajero(DatoId datoId ,PasajeroId pasajeroId,Correo corrreo, Direccion direccion, Fecha fechaNacimiento, Telefono telefono ){
+    public void agregarDatosPersonalesPasajero(DatoId datoId, PasajeroId pasajeroId, Correo corrreo, Direccion direccion, Fecha fechaNacimiento, Telefono telefono) {
         Objects.requireNonNull(pasajeroId);
         Objects.requireNonNull(corrreo);
         Objects.requireNonNull(direccion);
         Objects.requireNonNull(fechaNacimiento);
         Objects.requireNonNull(telefono);
-        appendChange(new DatosPersonalesPasajeroAgregado(pasajeroId, datoId, corrreo, direccion, fechaNacimiento, telefono)).apply();
+        appendChange(new DatosPersonalesPasajeroAsociados(pasajeroId, datoId, corrreo, direccion, fechaNacimiento, telefono)).apply();
 
     }
-    public void agregarTiqueteAereo(TiqueteId tiqueteId, Origen origen, Asiento asiento, Destino destino, Estado estado ){
-        Objects.requireNonNull(tiqueteId);
+
+    public void asociarTiqueteAereo(Origen origen, Asiento asiento, Destino destino, Estado estado) {
+        var tiqueteId = new TiqueteId();
         Objects.requireNonNull(origen);
         Objects.requireNonNull(asiento);
         Objects.requireNonNull(destino);
         Objects.requireNonNull(estado);
-        appendChange(new TiqueteAereoAgregado(tiqueteId,origen,  asiento,  destino, estado)).apply();
+        appendChange(new TiqueteAereoAsociado(tiqueteId, origen, asiento, destino, estado)).apply();
     }
 
-    public void actualizarDatosPersonalesPasajero(DatoId datoId ,PasajeroId pasajeroId,Correo corrreo, Direccion direccion, Fecha fechaNacimiento, Telefono telefono ) {
+    public void actualizarDatosPersonalesPasajero(DatoId datoId, PasajeroId pasajeroId, Correo corrreo, Direccion direccion, Fecha fechaNacimiento, Telefono telefono) {
         Objects.requireNonNull(pasajeroId);
         Objects.requireNonNull(corrreo);
         Objects.requireNonNull(direccion);
         Objects.requireNonNull(fechaNacimiento);
         Objects.requireNonNull(telefono);
-        appendChange(new DatosPersonalesPasajeroAgregado(pasajeroId, datoId, corrreo, direccion, fechaNacimiento, telefono)).apply();
+        appendChange(new DatosPersonalesPasajeroAsociados(pasajeroId, datoId, corrreo, direccion, fechaNacimiento, telefono)).apply();
     }
-    public void modificarNombrePasajero(PasajeroId pasajeroId,Nombre nombre){
+
+    public void modificarNombrePasajero(PasajeroId pasajeroId, Nombre nombre) {
         Objects.requireNonNull(pasajeroId);
         Objects.requireNonNull(nombre);
         appendChange(new NombreModificado(pasajeroId, nombre)).apply();
     }
 
-    public void modificarTelefonoPasajero(Telefono telefono){
+    public void modificarTelefonoPasajero(Telefono telefono) {
         Objects.requireNonNull(telefono);
         appendChange(new TelefonoModificado(telefono)).apply();
     }
-    public void modificarOrigenDeTiquete(Origen origen){
+
+    public void modificarOrigenDeTiquete(Origen origen) {
         Objects.requireNonNull(origen);
         appendChange(new OrigenModificado(origen)).apply();
     }
-    public void modificardestinodetiquete(PasajeroId pasajeroId,Destino destino){
+
+    public void modificardestinodetiquete(PasajeroId pasajeroId, Destino destino) {
         Objects.requireNonNull(pasajeroId);
         Objects.requireNonNull(destino);
 
-        appendChange(new DestinoModificado( pasajeroId,destino)).apply();
+        appendChange(new DestinoModificado(pasajeroId, destino)).apply();
     }
 
-    public void cambiarEstadoDeTiquete( Estado estado){
+    public void cambiarEstadoDeTiquete(Estado estado) {
         Objects.requireNonNull(estado);
         appendChange(new EstadoCambiado(estado)).apply();
     }
-    public void modificarMetodoDePago(MetodoPago metodopago){
+
+    public void modificarMetodoDePago(MetodoPago metodopago) {
         Objects.requireNonNull(metodopago);
         appendChange(new TipoDePagoModificado(metodopago)).apply();
     }
 
-   //Los Getter
+    //Los Getter
     public Nombre Nombre() {
         return nombre;
     }

@@ -4,7 +4,7 @@ import co.com.sofka.domain.generic.Command;
 import com.sofka.retovuelo.domain.pasajero.values.Estado;
 import com.sofka.retovuelo.domain.pasajero.values.PasajeroId;
 
-public class CambiarEstadoDeTiquete implements Command {
+public class CambiarEstadoDeTiquete extends Command  {
 
     private final PasajeroId pasajeroId;
     private final Estado estado;

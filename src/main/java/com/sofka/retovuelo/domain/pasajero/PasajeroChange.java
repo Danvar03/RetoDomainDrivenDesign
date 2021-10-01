@@ -10,7 +10,7 @@ public class PasajeroChange extends EventChange {
         apply((PasajeroAgregado event) -> {
             pasajero.nombre = event.getNombre();
         });
-        apply((DatosPersonalesPasajeroAgregado event) -> {
+        apply((DatosPersonalesPasajeroAsociados event) -> {
             pasajero.datosPersonal = new DatosPersonal(
                     event.getDatoId(),
                     event.getCorrreo(),
@@ -19,7 +19,7 @@ public class PasajeroChange extends EventChange {
                     event.getTelefono());
         });
 
-        apply((TiqueteAereoAgregado event) -> {
+        apply((TiqueteAereoAsociado event) -> {
             pasajero.tiqueteArereo = new TiqueteArereo(
                     event.getTiqueteId(),
                     event.getOrigen(),
