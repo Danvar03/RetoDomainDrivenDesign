@@ -11,8 +11,12 @@ public class Aerolinea implements ValueObject<String> {
     public Aerolinea(String value) {
         this.value = Objects.requireNonNull(value);
         if (this.value.isBlank()){
-            throw new IllegalArgumentException("El nombre de la aerolinea esta vacia");
+            throw new IllegalArgumentException("El nombre  esta vacia");
         }
+        if (this.value.length()>= 100){
+            throw new IllegalArgumentException("El nombre debe tener menos de 100 caracteres");
+        }
+
     }
 
     public String value() {

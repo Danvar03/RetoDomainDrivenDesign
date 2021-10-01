@@ -1,15 +1,14 @@
 package com.sofka.retovuelo.domain.vuelo.command;
 
-import co.com.sofka.domain.generic.DomainEvent;
+import co.com.sofka.domain.generic.Command;
 import com.sofka.retovuelo.domain.vuelo.values.Ruta;
 
 
-public class RutaCambiada extends DomainEvent  {
+public class RutaCambiada extends Command {
 
     private final Ruta ruta;
 
     public RutaCambiada(Ruta ruta) {
-        super("aerolinea.ventatiquetes.domain.vuelo.rutacambiada");
         this.ruta=ruta;
     }
 

@@ -21,7 +21,7 @@ class AgregarPasajeroUseCaseTest {
 
 
     @Test
-    @DisplayName("Pasa test agregar pasajero")
+    @DisplayName("Pasa test agregar vuelo")
     void AgregarPasajero(){
         var command = new AgregarPasajero(
                 PasajeroId.of("xxx-xx3"),

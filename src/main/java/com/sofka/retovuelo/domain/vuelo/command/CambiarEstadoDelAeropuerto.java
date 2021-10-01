@@ -1,15 +1,15 @@
 package com.sofka.retovuelo.domain.vuelo.command;
 
-import co.com.sofka.domain.generic.DomainEvent;
+import co.com.sofka.domain.generic.Command;
+
 import com.sofka.retovuelo.domain.vuelo.values.Estado;
 
 
-public class EstadoCambiadoDelAeropuerto extends DomainEvent {
+public class CambiarEstadoDelAeropuerto extends Command {
 
     private final Estado estado;
 
-    public EstadoCambiadoDelAeropuerto(Estado estado) {
-        super("ventatiquetes.vuelo.estadocambiado");
+    public CambiarEstadoDelAeropuerto(Estado estado) {
         this.estado=estado;
     }
 

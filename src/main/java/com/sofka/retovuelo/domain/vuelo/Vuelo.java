@@ -22,19 +22,20 @@ public class Vuelo extends AggregateEvent<VueloId> {
     protected Fecha fecha;
     protected Piloto piloto;
     protected Avion avion;
+    protected Aerolinea aerolinea;
 
-    public Vuelo(VueloId vueloId, Nombre nombrevuelo, Duracion duracion, Fecha fechahora) {
+    public Vuelo(VueloId vueloId, Aerolinea aerolinea, Duracion duracion, Fecha fechahora) {
         super(vueloId);
-        appendChange(new VueloCreado(vueloId,nombrevuelo,  duracion,  fechahora)).apply();
+        appendChange(new VueloCreado(vueloId, aerolinea, duracion, fechahora)).apply();
     }
 
-    private  Vuelo(VueloId vueloId){
+    private Vuelo(VueloId vueloId) {
         super(vueloId);
         subscribe(new VueloChange(this));
     }
 
     //factoria que permite crear el agregado
-    public static Vuelo from(VueloId entityId, List<DomainEvent> events){
+    public static Vuelo from(VueloId entityId, List<DomainEvent> events) {
         var vuelo = new Vuelo(entityId);
         events.forEach(vuelo::applyEvent);
         return vuelo;
@@ -42,32 +43,32 @@ public class Vuelo extends AggregateEvent<VueloId> {
 
     //comportamientos
 
-       public void cambiarDuracionDelVuelo(Duracion duracion){
+    public void cambiarDuracionDelVuelo(Duracion duracion) {
         Objects.requireNonNull(duracion);
         appendChange(new DuracionCambiada(duracion)).apply();
     }
 
-    public void cambiarFechayHoraDelVuelo(Fecha fecha){
+    public void cambiarFechayHoraDelVuelo(Fecha fecha) {
         Objects.requireNonNull(fecha);
         appendChange(new FechayHoraCambiada(fecha)).apply();
     }
 
-    public void cambiarEstadoDeAeropuerto(Estado estado){
+    public void cambiarEstadoDeAeropuerto(Estado estado) {
         Objects.requireNonNull(estado);
         appendChange(new EstadoCambiadoDelAeropuerto(estado)).apply();
     }
 
-    public void cambiarRutaDelAvion(Ruta ruta){
+    public void cambiarRutaDelAvion(Ruta ruta) {
         Objects.requireNonNull(ruta);
         appendChange(new RutaCambiada(ruta)).apply();
     }
 
-    public void cambiarTurnoDePiloto(Turno turno){
+    public void cambiarTurnoDePiloto(Turno turno) {
         Objects.requireNonNull(turno);
         appendChange(new TurnoCambiado(turno)).apply();
     }
 
-    public void cambiarNombrePiloto(Nombre nombre){
+    public void cambiarNombrePiloto(Nombre nombre) {
         Objects.requireNonNull(nombre);
         appendChange(new NombrePilotoCambiado(nombre)).apply();
     }
@@ -98,6 +99,7 @@ public class Vuelo extends AggregateEvent<VueloId> {
         return piloto;
     }
 
-
-
+    public Aerolinea Aerolinea() {
+        return aerolinea;
+    }
 }

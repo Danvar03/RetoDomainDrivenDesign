@@ -1,15 +1,15 @@
 package com.sofka.retovuelo.domain.vuelo.command;
 
+import co.com.sofka.domain.generic.Command;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.sofka.retovuelo.domain.genericvalues.Fecha;
 
 
-public class FechayHoraCambiada extends DomainEvent {
+public class CambiarFecha extends Command {
 
     private final Fecha fecha;
 
-    public FechayHoraCambiada(Fecha fecha) {
-        super("ventatiquetes.vuelo.fechayHoraCambiada");
+    public CambiarFecha(Fecha fecha) {
         this.fecha = fecha;
     }
 
