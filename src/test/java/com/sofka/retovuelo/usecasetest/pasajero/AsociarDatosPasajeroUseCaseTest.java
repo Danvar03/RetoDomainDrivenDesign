@@ -1,4 +1,4 @@
-package com.sofka.retovuelo.usecasetest;
+package com.sofka.retovuelo.usecasetest.pasajero;
 
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
@@ -77,7 +77,7 @@ class AsociarDatosPasajeroUseCaseTest {
         Assertions.assertEquals("Carrera 30#25-64", event.getDireccion().value());
         Assertions.assertEquals("2021-09-02", event.getFechaNacimiento().value());
         Assertions.assertEquals("22222222222", event.getTelefono().value());
-        //Mockito.verify(repository).getEventsBy(pasajeroId.value());
+       Mockito.verify(repository).getEventsBy(pasajeroId.value());
 
 
     }

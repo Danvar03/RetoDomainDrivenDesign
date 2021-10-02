@@ -14,7 +14,7 @@ public class DatosPersonal extends Entity<DatoId> {
     private final Correo corrreo;
     private final Direccion direccion;
     private final Fecha fechaNacimiento;
-    private  Telefono telefono;
+    private Telefono telefono;
 
 
     public DatosPersonal(DatoId datoId, Correo corrreo, Direccion direccion, Fecha fechaNacimiento, Telefono telefono) {
@@ -25,9 +25,10 @@ public class DatosPersonal extends Entity<DatoId> {
         this.telefono = telefono;
     }
 
-    //comportamiento
-    public void cambiartelefono(Telefono telefono){
-        this.telefono= Objects.requireNonNull(telefono);
+
+//comportamiento
+    public void cambiartelefono(Telefono telefono) {
+        this.telefono = Objects.requireNonNull(telefono);
     }
 
     public Correo getCorrreo() {

@@ -1,4 +1,4 @@
-package com.sofka.retovuelo.usecasetest;
+package com.sofka.retovuelo.usecasetest.vuelo;
 
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.support.RequestCommand;
@@ -43,8 +43,6 @@ public class CrearVueloCaseUseTest {
         Assertions.assertEquals("Avianca", event.getAerolinea().value());
         Assertions.assertEquals("50 minutos", event.getDuracion().value());
         Assertions.assertEquals("2002-09-02", event.getFecha().value());
-
-
 
 
     }

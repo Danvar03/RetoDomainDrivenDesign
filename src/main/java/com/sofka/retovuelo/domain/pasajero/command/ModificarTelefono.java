@@ -5,7 +5,6 @@ import com.sofka.retovuelo.domain.pasajero.values.PasajeroId;
 import com.sofka.retovuelo.domain.pasajero.values.Telefono;
 
 public class ModificarTelefono extends Command {
-
     private final PasajeroId pasajeroId;
     private final Telefono telefono;
 

@@ -10,8 +10,10 @@ public class TurnoCambiado extends DomainEvent {
 
     public TurnoCambiado(Turno turno) {
         super("aerolinea.ventatiquetes.domain.vuelo.turnocambiado");
-        this.turno=turno;
+
+        this.turno = turno;
     }
+
 
     public Turno getTurno() {
         return turno;

@@ -1,4 +1,4 @@
-package com.sofka.retovuelo.usecasetest;
+package com.sofka.retovuelo.usecasetest.pasajero;
 
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
@@ -51,7 +51,7 @@ class ModificarNombrePasajeroUseCaseTest {
                 new Nombre("Daniela Vargas Mendoza")
         );
 
-        when(repository.getEventsBy(any())).thenReturn(events());
+        when(repository.getEventsBy("xxx-xxx")).thenReturn(events());
 
         //Act
         var response= UseCaseHandler.getInstance().

@@ -1,4 +1,4 @@
-package com.sofka.retovuelo.usecasetest;
+package com.sofka.retovuelo.usecasetest.pasajero;
 
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
@@ -7,6 +7,7 @@ import co.com.sofka.domain.generic.DomainEvent;
 import com.sofka.retovuelo.domain.genericvalues.Fecha;
 import com.sofka.retovuelo.domain.genericvalues.Nombre;
 import com.sofka.retovuelo.domain.pasajero.command.ModificarTelefono;
+import com.sofka.retovuelo.domain.pasajero.event.DatosPersonalesPasajeroAsociados;
 import com.sofka.retovuelo.domain.pasajero.event.PasajeroAgregado;
 import com.sofka.retovuelo.domain.pasajero.event.TelefonoModificado;
 import com.sofka.retovuelo.domain.pasajero.values.PasajeroId;
@@ -21,6 +22,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
@@ -32,7 +34,7 @@ import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
-public class ModificarTelefonoPasajeroUseCaseTest {
+class ModificarTelefonoPasajeroUseCaseTest {
 
     private ModificarTelefonoPasajeroUseCase modificarTelefonoPasajeroUseCase;
 
@@ -41,9 +43,9 @@ public class ModificarTelefonoPasajeroUseCaseTest {
 
 
     @BeforeEach
-    public void setup(){
-        modificarTelefonoPasajeroUseCase= new ModificarTelefonoPasajeroUseCase();
-        repository=mock(DomainEventRepository.class);
+    public void setup() {
+        modificarTelefonoPasajeroUseCase = new ModificarTelefonoPasajeroUseCase();
+        repository = mock(DomainEventRepository.class);
         modificarTelefonoPasajeroUseCase.addRepository(repository);
     }
 
@@ -52,20 +54,23 @@ public class ModificarTelefonoPasajeroUseCaseTest {
     @DisplayName("Pasa test de modificar nombre de pasajero")
     void modificarTelefonoHappyPath() {
         //arrage
+        var pasajeroId = PasajeroId.of("xxx-xxx");
+        var telefono = new Telefono("3152417147");
+
         var command = new ModificarTelefono(
-                PasajeroId.of("xxx-xxx"),
-                new Telefono("3152417147"));
+                pasajeroId,
+                telefono
+                );
 
+                Mockito.when(repository.getEventsBy(pasajeroId.value())).thenReturn(events());
 
-        when(repository.getEventsBy(any())).thenReturn(events());
-
-        var response= UseCaseHandler.getInstance().
-                setIdentifyExecutor("xxx-xxx").syncExecutor(
+        var events = UseCaseHandler.getInstance().
+                setIdentifyExecutor(pasajeroId.value()).syncExecutor(
                         modificarTelefonoPasajeroUseCase, new RequestCommand<>(command)
-                ).orElseThrow();
+                ).orElseThrow()
+                .getDomainEvents();
 
-        var event=(TelefonoModificado)response.getDomainEvents().get(0);
-
+        var event = (DatosPersonalesPasajeroAsociados) events.get(0);
         //Asserts:
         Assertions.assertEquals("3152417147", event.getTelefono().value());
 

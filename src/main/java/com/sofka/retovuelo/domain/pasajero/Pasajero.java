@@ -6,6 +6,7 @@ import com.sofka.retovuelo.domain.genericvalues.Destino;
 import com.sofka.retovuelo.domain.genericvalues.Fecha;
 import com.sofka.retovuelo.domain.genericvalues.Nombre;
 import com.sofka.retovuelo.domain.genericvalues.Origen;
+import com.sofka.retovuelo.domain.pasajero.command.ModificarTelefono;
 import com.sofka.retovuelo.domain.pasajero.entity.DatosPersonal;
 import com.sofka.retovuelo.domain.pasajero.entity.Pago;
 import com.sofka.retovuelo.domain.pasajero.entity.TiqueteArereo;
@@ -21,6 +22,7 @@ public class Pasajero extends AggregateEvent<PasajeroId> {
     protected Pago pago;
     protected DatosPersonal datosPersonal;
     protected TiqueteArereo tiqueteArereo;
+    protected Telefono telefono;
 
     public Pasajero(PasajeroId pasajeroId, Nombre nombre) {
         super(pasajeroId);
@@ -92,9 +94,9 @@ public class Pasajero extends AggregateEvent<PasajeroId> {
         appendChange(new DestinoModificado(pasajeroId, destino)).apply();
     }
 
-    public void cambiarEstadoDeTiquete(Estado estado) {
+    public void cambiarEstadoDeTiquete(PasajeroId pasajeroId,Estado estado) {
         Objects.requireNonNull(estado);
-        appendChange(new EstadoCambiado(estado)).apply();
+        appendChange(new EstadoCambiado(pasajeroId,estado)).apply();
     }
 
     public void modificarMetodoDePago(MetodoPago metodopago) {
@@ -102,7 +104,17 @@ public class Pasajero extends AggregateEvent<PasajeroId> {
         appendChange(new TipoDePagoModificado(metodopago)).apply();
     }
 
+    public void cambiartelefono( Telefono telefono) {
+        Objects.requireNonNull(telefono);
+        appendChange(new TelefonoModificado(telefono)).apply();
+    }
+
     //Los Getter
+
+    public Telefono Telefono() {
+        return telefono;
+    }
+
     public Nombre Nombre() {
         return nombre;
     }

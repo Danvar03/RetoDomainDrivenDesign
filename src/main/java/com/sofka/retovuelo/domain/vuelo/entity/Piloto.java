@@ -7,31 +7,28 @@ import com.sofka.retovuelo.domain.vuelo.values.Turno;
 
 import java.util.Objects;
 
-public class  Piloto extends Entity<PilotoId> {
-
-    private Nombre nombrepiloto;
+public class Piloto extends Entity<PilotoId> {
+    private Nombre nombre;
     private Turno turno;
 
-    public Piloto(PilotoId entityId, Nombre nombrepiloto, Turno turno) {
-        super(entityId);
-        this.nombrepiloto = nombrepiloto;
+
+    public Piloto(PilotoId pilotoId, Nombre nombrepiloto, Turno turno) {
+        super(pilotoId);
+        this.nombre = nombrepiloto;
         this.turno = turno;
     }
 
-    //comportamientos
-
-    //comportamientos
-    public void cambiarnormbrepiloto(Nombre nombrepiloto){
-        this.nombrepiloto= Objects.requireNonNull(nombrepiloto);
+    public void cambiarnormbrepiloto(Nombre nombrepiloto) {
+        this.nombre = Objects.requireNonNull(nombrepiloto);
     }
 
-    public void cambiarturno(Turno turno){
-        this.turno= Objects.requireNonNull(turno);
+    public void cambiarturno(Turno turno) {
+        this.turno = Objects.requireNonNull(turno);
     }
     //propiedades
 
-    public Nombre getNombrepiloto() {
-        return nombrepiloto;
+    public Nombre getNombre() {
+        return nombre;
     }
 
     public Turno getTurno() {

@@ -1,4 +1,4 @@
-package com.sofka.retovuelo.usecasetest;
+package com.sofka.retovuelo.usecasetest.pasajero;
 
 
 import co.com.sofka.business.generic.UseCaseHandler;
@@ -42,7 +42,7 @@ class AsociarTiqueteAereoConPasajeroUseCaseTest {
 
 
     @Test
-    @DisplayName("Pasa test de modificar nombre de pasajero")
+    @DisplayName("Pasa test de asociar tiquet")
     void asociarTiquete() {
         //arrage
         var pasajeroId = PasajeroId.of("xxx-xx3");

@@ -12,7 +12,6 @@ public class CrearVuelo extends Command {
 
     private final VueloId vueloId;
     private final Aerolinea aerolinea;
-
     private final Duracion duracion;
     private final Fecha fecha;
 
@@ -21,7 +20,6 @@ public class CrearVuelo extends Command {
 
         this.vueloId = vueloId;
         this.aerolinea = aerolinea;
-
         this.duracion = duracion;
         this.fecha = fechahora;
     }

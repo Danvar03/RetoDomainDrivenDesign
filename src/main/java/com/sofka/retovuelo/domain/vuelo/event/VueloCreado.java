@@ -8,7 +8,6 @@ import com.sofka.retovuelo.domain.vuelo.values.VueloId;
 
 
 public class VueloCreado extends DomainEvent {
-
     private final VueloId vueloId;
     private final Aerolinea aerolinea;
     private final Duracion duracion;
@@ -22,6 +21,7 @@ public class VueloCreado extends DomainEvent {
         this.duracion = duracion;
         this.fecha = fechahora;
     }
+
 
     public VueloId getVueloId() {
         return vueloId;

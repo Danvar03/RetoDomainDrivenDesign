@@ -15,7 +15,7 @@ import java.util.Objects;
 
 public class Vuelo extends AggregateEvent<VueloId> {
 
-    protected VueloId vueloId;
+
     protected Nombre nombrevuelo;
     protected Trayecto trayecto;
     protected Duracion duracion;
@@ -23,6 +23,7 @@ public class Vuelo extends AggregateEvent<VueloId> {
     protected Piloto piloto;
     protected Avion avion;
     protected Aerolinea aerolinea;
+
 
     public Vuelo(VueloId vueloId, Aerolinea aerolinea, Duracion duracion, Fecha fechahora) {
         super(vueloId);
@@ -42,15 +43,23 @@ public class Vuelo extends AggregateEvent<VueloId> {
     }
 
     //comportamientos
+    public void agregarPiloto(PilotoId pilotoId, Nombre nombre, Turno turno) {
+        Objects.requireNonNull(pilotoId);
+        Objects.requireNonNull(nombre);
+        Objects.requireNonNull(turno);
+        appendChange(new PilotoAgregado(pilotoId, nombre, turno)).apply();
 
-    public void cambiarDuracionDelVuelo(Duracion duracion) {
-        Objects.requireNonNull(duracion);
-        appendChange(new DuracionCambiada(duracion)).apply();
     }
 
-    public void cambiarFechayHoraDelVuelo(Fecha fecha) {
+    public void cambiarDuracionDelVuelo(VueloId vueloId,Duracion duracion) {
+        Objects.requireNonNull(vueloId);
+        Objects.requireNonNull(duracion);
+        appendChange(new DuracionCambiada(vueloId, duracion)).apply();
+    }
+
+    public void cambiarFechayHoraDelVuelo(VueloId vueloId, Fecha fecha) {
         Objects.requireNonNull(fecha);
-        appendChange(new FechayHoraCambiada(fecha)).apply();
+        appendChange(new FechayHoraCambiada(vueloId, fecha)).apply();
     }
 
     public void cambiarEstadoDeAeropuerto(Estado estado) {

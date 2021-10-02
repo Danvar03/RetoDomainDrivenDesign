@@ -1,4 +1,4 @@
-package com.sofka.retovuelo.usecasetest;
+package com.sofka.retovuelo.usecasetest.pasajero;
 
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.support.RequestCommand;
@@ -39,7 +39,7 @@ class AgregarPasajeroUseCaseTest {
         var event = (PasajeroAgregado) events.get(0);
 
         Assertions.assertTrue(Objects.nonNull(event.getPasajeroId().value()));
-        Assertions.assertEquals("Saraa", event.getNombre().value());
+        Assertions.assertEquals("Sara", event.getNombre().value());
 
     }
 
